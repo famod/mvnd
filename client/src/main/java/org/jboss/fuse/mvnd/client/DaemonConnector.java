@@ -362,7 +362,7 @@ public class DaemonConnector {
     }
 
     public DaemonConnection<Message> connect(int port) throws DaemonException.ConnectException {
-        InetSocketAddress address = new InetSocketAddress(port);
+        InetSocketAddress address = new InetSocketAddress(Inet4Address.getLoopbackAddress(), port);
         try {
             LOGGER.debug("Trying to connect to address {}.", address);
             SocketChannel socketChannel = SocketChannel.open();
