@@ -93,7 +93,7 @@ public class Server implements AutoCloseable, Runnable {
             cli = new DaemonMavenCli();
 
             registry = new DaemonRegistry(layout.registry());
-            socket = ServerSocketChannel.open().bind(new InetSocketAddress(Inet4Address.getLoopbackAddress(), 0));
+            socket = ServerSocketChannel.open().bind(new InetSocketAddress(java.net.InetAddress.getLoopbackAddress(), 0));
 
             final int idleTimeout = Environment.DAEMON_IDLE_TIMEOUT
                     .systemProperty()

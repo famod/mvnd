@@ -46,9 +46,9 @@ import org.jboss.fuse.mvnd.common.DaemonRegistry;
 import org.jboss.fuse.mvnd.common.DaemonState;
 import org.jboss.fuse.mvnd.common.DaemonStopEvent;
 import org.jboss.fuse.mvnd.common.Environment;
+import org.jboss.fuse.mvnd.common.MavenDaemon;
 import org.jboss.fuse.mvnd.common.Message;
 import org.jboss.fuse.mvnd.common.Serializer;
-import org.jboss.fuse.mvnd.common.MavenDaemon;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -362,7 +362,7 @@ public class DaemonConnector {
     }
 
     public DaemonConnection<Message> connect(int port) throws DaemonException.ConnectException {
-        InetSocketAddress address = new InetSocketAddress(Inet4Address.getLoopbackAddress(), port);
+        InetSocketAddress address = new InetSocketAddress(java.net.InetAddress.getLoopbackAddress(), port);
         try {
             LOGGER.debug("Trying to connect to address {}.", address);
             SocketChannel socketChannel = SocketChannel.open();
